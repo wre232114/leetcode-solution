@@ -51,38 +51,38 @@ Runtime 0 ms, faster than 100%.
 use std::collections::{HashMap};
 
 impl Solution {
-        pub fn rob(nums: Vec<i32>) -> i32 {
-            if nums.len() == 1 {
-                return nums[0];
-            }
+     pub fn rob(nums: Vec<i32>) -> i32 {
+         if nums.len() == 1 {
+             return nums[0];
+         }
 
-            let mut cache_1 = HashMap::new();
-            let mut cache_2 = HashMap::new();
+         let mut cache_1 = HashMap::new();
+         let mut cache_2 = HashMap::new();
 
-            std::cmp::max(
-                Self::rob_internal(0, &nums[0..nums.len() - 1], &mut cache_1),
-                Self::rob_internal(0, &nums[1..], &mut cache_2),
-            )
-        }
+         std::cmp::max(
+             Self::rob_internal(0, &nums[0..nums.len() - 1], &mut cache_1),
+             Self::rob_internal(0, &nums[1..], &mut cache_2),
+         )
+     }
 
-        pub fn rob_internal(i: usize, nums: &[i32], cache: &mut HashMap<usize, i32>) -> i32 {
-            if nums.len() == 1 {
-                return *nums.last().unwrap();
-            } else if i >= nums.len() {
-                return 0;
-            } else if cache.contains_key(&i) {
-                return *cache.get(&i).unwrap();
-            }
+     pub fn rob_internal(i: usize, nums: &[i32], cache: &mut HashMap<usize, i32>) -> i32 {
+         if nums.len() == 1 {
+             return *nums.last().unwrap();
+         } else if i >= nums.len() {
+             return 0;
+         } else if cache.contains_key(&i) {
+             return *cache.get(&i).unwrap();
+         }
 
-            let non_robbed_i = Self::rob_internal(i + 1, nums, cache);
+         let non_robbed_i = Self::rob_internal(i + 1, nums, cache);
 
-            let first = nums[i];
-            let robbed_i = first + Self::rob_internal(i + 2, nums, cache);
+         let first = nums[i];
+         let robbed_i = first + Self::rob_internal(i + 2, nums, cache);
 
-            let res = std::cmp::max(robbed_i, non_robbed_i);
+         let res = std::cmp::max(robbed_i, non_robbed_i);
 
-            cache.insert(i, res);
-            res
-        }
-    }
+         cache.insert(i, res);
+         res
+     }
+ }
 ```
