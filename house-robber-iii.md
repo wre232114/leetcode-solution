@@ -85,6 +85,3 @@ impl Solution {
 }
 ```
 
-### 3.2 Implemention 2: Iteration
-```rust
-```
