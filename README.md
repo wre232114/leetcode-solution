@@ -9,6 +9,7 @@ personal leetcode solutions using rust and typescript.
 ### Dynamic Programming
 #### easy
 * [118. Pascal's Triangle](./pascals-triangle.md)
+* [119. Pascal's Triangle II](./valid-sudoku-ii.md)
 
 #### medium
 * [213. House Robber II](./house-robber-ii.md)
