@@ -31,7 +31,9 @@ The number of nodes in the tree is in the range [1, 3 * 104].
 ```
 
 ## 2. Solution
+Using post traverse and DP, define the max value of the root is dp[i]. the maximum path can neither go through the root of not, we define these two scenarios as root_contains or root_not_contains. If contains root, there are thscenarios: root + left, root + right, root + left + right. But if root's parent also in the path, then the `root + left + right` is not available cause a path can not go through left and right as the same time. So in the code below we define triple (root_contains, root_not_contains, root + left + right) as state. 
 
+dp[root] = max(dp[root.left], dp[root.right], v[root] + dp[root.left.contains], v[root] + dp[root.right.contains], v[root] + dp[root.left.contains] + dp[root.right.contains])
 
 ## 3. Code
 ### 3.1 rust
